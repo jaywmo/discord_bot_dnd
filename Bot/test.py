@@ -1,6 +1,10 @@
 import discord
 from discord.ext import commands
 import random
+import logging
+
+
+logging.basicConfig(level=logging.INFO)
 
 description = '''An example bot to showcase the discord.ext.commands extension
 module.
@@ -59,5 +63,10 @@ async def cool(ctx):
 async def _bot():
     """Is the bot cool?"""
     await bot.say('Yes, the bot is cool.')
+
+@bot.command()
+async def test():
+    await bot.say('?test1')
+
 
 bot.run('NDI1NDE0MDc3MjEzNTczMTIx.DZIofw.Ej2h-rzPaNuGzaDzme_w04Q-SKg')
