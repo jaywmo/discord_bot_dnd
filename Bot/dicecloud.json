@@ -1,0 +1,74 @@
+{
+  "Id": "uaGrZMBZpxXF2eyKM",
+  "Name": "Murithi Orchamus",
+  "Source": "DiceCloud",
+  "Type": "Gnome",
+  "HP": {
+    "Value": 0,
+    "Notes": ""
+  },
+  "AC": {
+    "Value": 10,
+    "Notes": "Dexterity Armor Bonus"
+  },
+  "InitiativeModifier": 0,
+  "Speed": [
+    "0"
+  ],
+  "Abilities": {
+    "Str": 10,
+    "Dex": 10,
+    "Con": 10,
+    "Cha": 10,
+    "Int": 10,
+    "Wis": 10
+  },
+  "DamageVulnerabilities": [],
+  "DamageResistances": [],
+  "DamageImmunities": [],
+  "ConditionImmunities": [],
+  "Saves": [
+    {
+      "Name": "Str",
+      "Modifier": 0
+    },
+    {
+      "Name": "Dex",
+      "Modifier": 0
+    },
+    {
+      "Name": "Con",
+      "Modifier": 0
+    },
+    {
+      "Name": "Int",
+      "Modifier": 0
+    },
+    {
+      "Name": "Wis",
+      "Modifier": 0
+    },
+    {
+      "Name": "Cha",
+      "Modifier": 0
+    }
+  ],
+  "Skills": [],
+  "Senses": [
+    "passive Perception 10"
+  ],
+  "Languages": [],
+  "Challenge": "",
+  "Traits": [
+    {
+      "Name": "Base Ability Scores",
+      "Content": "",
+      "Usage": ""
+    }
+  ],
+  "Actions": [],
+  "Reactions": [],
+  "LegendaryActions": [],
+  "Description": "",
+  "Player": "percutio"
+}
