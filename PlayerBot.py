@@ -11,16 +11,15 @@ import yaml
 
 with open("Config/my_PlayerBot_config.yaml", 'r') as stream:
     config = yaml.load(stream)
-
-
 logging.basicConfig(level=logging.INFO)
+
+# this specifies what extensions to load when the bot starts up
+startup_extensions = ["PlayerBot.Rolls"]
 
 description = '''An example bot to showcase the discord.ext.commands extension
 module.
 There are a number of utility commands being showcased here.'''
 bot = commands.Bot(command_prefix=config['command_prefix'], description=description, owner_id=106566006637338624)
-# this specifies what extensions to load when the bot starts up
-startup_extensions = ["PlayerBot.Rolls"]
 
 
 @bot.event
@@ -38,15 +37,15 @@ async def load(ctx, extension_name: str):
     """Loads an extension."""
     try:
         bot.load_extension(extension_name)
-    except (AttributeError, ImportError) as e:
-        await ctx.send("```py\n{}: {}\n```".format(type(e).__name__, str(e)))
+    except (AttributeError, ImportError) as ex:
+        await ctx.send("```py\n{}: {}\n```".format(type(ex).__name__, str(ex)))
         return
     await ctx.send("{} loaded.".format(extension_name))
 
 
 @bot.command()
 @commands.is_owner()
-async def unload(ctx, extension_name : str):
+async def unload(ctx, extension_name: str):
     """Unloads an extension."""
     bot.unload_extension(extension_name)
     await ctx.send("{} unloaded.".format(extension_name))
@@ -60,4 +59,4 @@ if __name__ == "__main__":
             exc = '{}: {}'.format(type(e).__name__, e)
             print('Failed to load extension {}\n{}'.format(extension, exc))
 
-    bot.run(config['token'])
+bot.run(config['token'])
