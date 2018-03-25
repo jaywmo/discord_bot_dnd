@@ -16,9 +16,7 @@ logging.basicConfig(level=logging.INFO)
 # this specifies what extensions to load when the bot starts up
 startup_extensions = ["PlayerBot.Rolls"]
 
-description = '''An example bot to showcase the discord.ext.commands extension
-module.
-There are a number of utility commands being showcased here.'''
+description = '''DnD Bot for Players.'''
 bot = commands.Bot(command_prefix=config['command_prefix'], description=description, owner_id=106566006637338624)
 
 

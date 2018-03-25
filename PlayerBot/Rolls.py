@@ -7,10 +7,7 @@ import random
 import re
 import logging
 import yaml
-
-
-with open("Config/my_PlayerBot_config.yaml", 'r') as stream:
-    config = yaml.load(stream)
+from Library.NdN_roll import _roll
 
 
 class RollCommands:
@@ -27,21 +24,25 @@ class RollCommands:
             await ctx.send('Format has to be in NdN!')
             return
 
-        result = np.random.randint(1, limit + 1, size=rolls)
-        result_sum = np.sum(result)
+        result, result_sum = _roll(rolls, limit)
         logging.info(result)
         # result = ', '.join(str(random.randint(1, limit)) for r in range(rolls))
+        add_str = ''
         if args:
             regex = r'(\w*\+)(\d+)'
             match = re.search(regex, args[0])
             if match:
-                if match.group(1) == '+':
-                    result_sum += int(match.group(2))
-                elif match.group(1) == 'r+':
-                    result += int(match.group(2))
-                    result_sum = np.sum(result)
+                result, result_sum = _roll(rolls, limit, match.group(1), int(match.group(2)))
+                add_str = '{}'.format(match.group(0))
+            else:
+                result, result_sum = _roll(rolls, limit)
+        else:
+            result, result_sum = _roll(rolls, limit)
 
-        await ctx.send('`{}\n={}`'.format(str(result.tolist())[1:-1], result_sum))
+        for i in range(len(result_sum)):
+            print(result[i][1:-1])
+            print(result_sum[i])
+            await ctx.send('`({}) {}\n={}`'.format(result[i][1:-1], add_str, result_sum[i]))
         logging.info('`{}`'.format(args))
 
 
