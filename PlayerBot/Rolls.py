@@ -1,13 +1,7 @@
-import discord
 from discord.ext import commands
-import asyncio
-import numpy as np
-import pandas as pd
-import random
 import re
 import logging
-import yaml
-from Library.NdN_roll import _roll
+from Library.NdN_roll import ndn_roll
 
 
 class RollCommands:
@@ -24,7 +18,10 @@ class RollCommands:
             await ctx.send('Format has to be in NdN!')
             return
 
-        result, result_sum = _roll(rolls, limit)
+        if rolls > 999999:
+            await ctx.send('Fuck you. Calculate that yourself by hand.')
+            return
+        result, result_sum = ndn_roll(rolls, limit)
         logging.info(result)
         # result = ', '.join(str(random.randint(1, limit)) for r in range(rolls))
         add_str = ''
@@ -32,12 +29,12 @@ class RollCommands:
             regex = r'(\w*\+)(\d+)'
             match = re.search(regex, args[0])
             if match:
-                result, result_sum = _roll(rolls, limit, match.group(1), int(match.group(2)))
+                result, result_sum = ndn_roll(rolls, limit, match.group(1), int(match.group(2)))
                 add_str = '{}'.format(match.group(0))
             else:
-                result, result_sum = _roll(rolls, limit)
+                result, result_sum = ndn_roll(rolls, limit)
         else:
-            result, result_sum = _roll(rolls, limit)
+            result, result_sum = ndn_roll(rolls, limit)
 
         for i in range(len(result_sum)):
             print(result[i][1:-1])

@@ -1,10 +1,5 @@
 import discord
 from discord.ext import commands
-import asyncio
-import numpy as np
-import pandas as pd
-import random
-import re
 import logging
 import yaml
 

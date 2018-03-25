@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def _roll(size=1, limit=20, add_type=None, add=0, repeat=1):
+def ndn_roll(size=1, limit=20, add_type=None, add=0, repeat=1):
     # returns result as array in string form and result_sum as integer
     result = np.random.randint(1, limit + 1, size=(repeat, size))
     if add_type == 'r+':
@@ -11,3 +11,7 @@ def _roll(size=1, limit=20, add_type=None, add=0, repeat=1):
 
     result = np.array([np.array2string(rolls, separator=', ') for rolls in result], dtype=str)
     return result, result_sum
+
+
+def _roll_string_format():
+    pass
